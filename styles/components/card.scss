@@ -1,0 +1,51 @@
+.n-card {
+  width: 373px;
+  height: 448px;
+  background: $white;
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.16);
+  border-radius: 16px;
+  margin: 0 31px 40px 0;
+
+  p {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    line-height: 1.3em;
+    height: 100%;
+  }
+}
+
+.n-card__desk {
+  padding: 32px;
+}
+
+.n-card__img-wrap {
+  height: 224px;
+  display: block;
+  border-radius: 16px 16px 0 0;
+}
+
+.n-card__img {
+  width: 100%;
+}
+
+.n-card__date {
+  color: $granite;
+  font-weight: 600;
+}
+
+.n-card__date_passive {
+  width: 112px;
+  height: 18px;
+  margin-bottom: 12px;
+}
+
+.n-card__text_passive {
+  height: 126px;
+}
+
+.passive-color {
+  background-color: $granite;
+  opacity: 0.5;
+}

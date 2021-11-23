@@ -1,0 +1,13 @@
+.header {
+  background: linear-gradient(90deg, #3951E7 20.77%, #832AB9 91.64%);
+  color: $white;
+}
+
+.header__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
