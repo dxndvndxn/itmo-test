@@ -28,6 +28,8 @@
 
 .n-card__img {
   width: 100%;
+  height: 224px;
+  border-radius: 16px 16px 0 0;
 }
 
 .n-card__date {
@@ -36,13 +38,19 @@
 }
 
 .n-card__date_passive {
-  width: 112px;
+  width: 150px;
   height: 18px;
   margin-bottom: 12px;
+  .n-card__date {
+    visibility: hidden;
+  }
 }
 
 .n-card__text_passive {
   height: 126px;
+  p {
+    visibility: hidden;
+  }
 }
 
 .passive-color {

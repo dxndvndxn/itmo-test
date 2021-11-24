@@ -1,7 +1,7 @@
 import axios from "axios"
 
-const getCards = (category, getParams, dynamicVar) => {
-    const url = `${category}?ver=2.0${getParams}`
+const getCards = (category: string, getParams: string, dynamicVar: string) => {
+    const url: string = `${category}?ver=2.0${getParams}`
 
     return new Promise((resolve, reject) => {
         axios

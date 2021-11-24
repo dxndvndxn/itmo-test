@@ -5,32 +5,33 @@ type Props = {
     img: string,
     date: string,
     text: string,
-    url: string
+    url: string,
+    loaded: boolean
 }
 
-function TheNewsCard ({ img, title, date, text, url } :Props) {
+function TheNewsCard ({ img, title, date, text, url, loaded } :Props) {
     return (
         <div className="n-card">
             <a href={ url } className={classNames('n-card__img-wrap', {
-                'skeleton': url === '#'
+                'skeleton': !loaded
             })
             }>
                 {
-                    img ? <img src={img} alt={title} className="n-card__img"/>
+                    img ? <img src={img} alt={title} className="n-card__img" />
                         :
                         img
                 }
             </a>
             <div className="n-card__desk">
-                <div className={classNames('n-card__date', {
-                    'n-card__date_passive skeleton': !date
+                <div className={classNames('', {
+                    'n-card__date_passive skeleton': !loaded
                 })
                 }>
-                    { date }
+                   <span className='n-card__date'>  { date } </span>
                 </div>
                 <div
-                    className={classNames('', {
-                        'n-card__text_passive skeleton': !text
+                    className={classNames('n-card__text', {
+                        'n-card__text_passive skeleton': !loaded
                     })}
                     dangerouslySetInnerHTML={{ __html: text }}>
                 </div>

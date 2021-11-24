@@ -11,15 +11,18 @@ type Props = {
 type ReduxState = {
     language: langId
 }
+
 type langId = {
     langId: number
 }
+
 type CardNews = {
     image_small: string,
     title: string,
     date: string,
     lead: string,
-    url: string
+    url: string,
+    loaded: boolean
 }
 
 type monthsOptions = {
@@ -64,13 +67,16 @@ function News({ langId } :Props) {
         lead: '',
         url: '#'
     }))
-    const getParams = `&lead=true&language_id=${langId}&per_page=9`
+    const [ newsLoaded, setLoaded ] = useState(false)
+    const getParams: string = `&lead=true&language_id=${langId}&per_page=9`
 
     useEffect(() => {
+        if (newsLoaded) setLoaded(false)
         // Чтобы показать заглушку
         setTimeout(() => {
             getCards('news/list/', getParams, 'news')
-                .then(news => {
+                .then((news: any) => {
+                    setLoaded(true)
                     setNews(news)
                 })
         }, 2000)
@@ -87,7 +93,7 @@ function News({ langId } :Props) {
 
     return (
         <div className="container">
-            <TheTitle title="Новости и события"/>
+            <TheTitle title="Новости и события" />
             <div className="news">
                 {
                     news.length && news.map((article: CardNews, i: number) => (
@@ -97,6 +103,7 @@ function News({ langId } :Props) {
                             date={ article.date ? validDate(article.date) : article.date }
                             text={ article.lead }
                             url={ article.url }
+                            loaded={ newsLoaded }
                             key={ article.title + i }
                         />
                     ))

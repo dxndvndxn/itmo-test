@@ -1,4 +1,4 @@
-const setLang = (langId) => ({
+const setLang = (langId: number) => ({
     type: 'SET_LANG',
     payload: langId
 })
