@@ -2,8 +2,8 @@ import SwitchLang from "./SwitchLang";
 
 
 interface language {
-  img: String,
-  lang: String,
+  img: string,
+  lang: string,
   id: number
 }
 

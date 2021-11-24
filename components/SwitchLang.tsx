@@ -1,10 +1,11 @@
-import React, {useState, useEffect, useRef, FC} from "react"
+import React, {useState, useEffect, useRef} from "react"
 import classNames from "classnames"
 import { connect } from "react-redux"
 import setLang from "../redux/actions/setLang"
+
 interface language {
-    img: String,
-    lang: String,
+    img: string,
+    lang: string,
     id: number
 }
 
@@ -16,10 +17,15 @@ type Props = {
     setLang: Function
 }
 
+type ReduxState = {
+    language: any
+}
+
+
 function SwitchLang({ langs, langId, setLang } :Props) {
-    const [ activeLang, setActive ] = useState(langs.find(lang => lang.id === langId))
+    const [ activeLang, setActive ] = useState<language | undefined>(langs.find(lang => lang.id === langId))
     const [ showList, setShowList ] = useState(false)
-    const refSwitch = useRef()
+    const refSwitch = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         document.body.addEventListener('click', handleOutside)
@@ -32,7 +38,7 @@ function SwitchLang({ langs, langId, setLang } :Props) {
             setShowList(false)
         }
     }
-    const handleOutside = ({ path }) => {
+    const handleOutside = ({ path } :any) => {
         const isSwitch = path.includes(refSwitch.current)
         if (!isSwitch) setShowList(false)
     }
@@ -40,8 +46,8 @@ function SwitchLang({ langs, langId, setLang } :Props) {
     return (
         <div className="switch" ref={ refSwitch }>
             <div className="switch__lang">
-                <img className="switch__img" src={ activeLang.img } alt={ activeLang.lang } />
-                <span> { activeLang.lang } </span>
+                <img className="switch__img" src={ activeLang!.img || '' } alt={ activeLang!.img || '' } />
+                <span> { activeLang!.lang } </span>
                 <img src='/arrow.svg'
                      alt="Arrow"
                      onClick={() => setShowList(!showList)}
@@ -73,7 +79,7 @@ function SwitchLang({ langs, langId, setLang } :Props) {
     )
 }
 
-const state = (state: object) => {
+const state = (state: ReduxState) => {
     return {
         langId: state.language.langId
     }

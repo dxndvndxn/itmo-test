@@ -1,13 +1,9 @@
 import classNames from "classnames";
-interface date {
-    day: string,
-    month: string,
-    year: string
-}
+
 type Props = {
     title: string,
     img: string,
-    date: date,
+    date: string,
     text: string,
     url: string
 }
@@ -30,11 +26,7 @@ function TheNewsCard ({ img, title, date, text, url } :Props) {
                     'n-card__date_passive skeleton': !date
                 })
                 }>
-                    {
-                        date ? date.day + ' ' + date.month + ' ' + date.year
-                            :
-                            date
-                    }
+                    { date }
                 </div>
                 <div
                     className={classNames('', {
